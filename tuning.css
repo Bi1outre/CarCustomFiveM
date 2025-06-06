@@ -1,0 +1,440 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('/nui/police/Poppins-Medium.ttf') format('truetype');
+}
+
+#sideBar {
+  position: relative;
+  margin: 0;
+  padding: 0;
+
+  left: 0vh;
+  bottom: -13.5vh;
+
+  width: 6vh;
+  height: 40vh;
+}
+
+.sideItem {
+  width: 6vh;
+  height: 6vh;
+  margin-bottom: 0.2vh;
+  background-color: #1e1e1e;
+
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border-radius: 1vh;
+  border-left: solid 0.75vh #0047AB;
+
+  cursor: pointer;
+}
+.sideItem img{
+  height: 90%;
+  margin: unset;
+  background-color: unset;
+  width: 90%;
+
+}
+#Menu{
+  padding: 6vh 1vh 0vh 1vh;
+  height: 70vh;
+  margin-top: 5vh;
+  border: unset;
+  border-radius: 15px;
+  width: 45vh;
+  background-color: #1e1e1e;
+}
+
+#Arcadia{
+  top: -7vh;
+  left: 16vh;
+  position: fixed;
+  background-color: unset;
+  width: 25vh;
+  height: 23vh;
+}
+
+h1{
+  white-space: nowrap;
+  font-size: 4vh;
+}
+p,img,select{
+  height: 3vh;
+  width: 100%;
+  background-color: #292929;
+  opacity: 60;
+  border: solid rgba(0, 0, 0, 0);
+  border-radius: 5px;
+  margin: 15px;
+}
+select{
+  color: white;
+  text-align: center;
+  border-color: white;
+  height: 4vh;
+}
+.Piece{
+  background-color: #292929;
+  display: flex;
+  height: 15vh;
+  width: 15vh;
+}
+#bottom{
+  border-radius: 6px;
+  position: absolute;
+  left: 7.8vh;
+  top: 72vh;
+  width: 45vh;
+  background-color: rgb(255 255 255 / 22%);
+}
+#bottomContainer{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr; 
+}
+.Opener{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 7vh;
+  background-color: rgb(0 0 0 / 14%);
+}
+.Opener img {
+  width: 75%;
+  margin: 0;
+  height: 75%;
+}
+#contenant{
+  position: absolute;
+  max-width: 45vh;
+  width: fit-content;
+  height: fit-content;
+}
+.Principal{
+  height: 45vh;
+}
+.Modifications{
+  top: 12vh;
+  left: 53.5vh;
+  display: flex;
+  background-color: #1e1e1e;
+}
+
+#Categorie{
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 45vh;
+  height: 60vh;
+
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll; 
+  align-content: flex-start;
+}
+.Principal #Categorie{
+  height: 45vh;
+}
+#Categorie.secondaire {
+    display: block;
+}
+
+#Categorie.secondaire .Piece p {
+  color: white;
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#Categorie::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+.Modifications #Categorie{
+  width:0vh;
+  border: none;
+  transition: 0.5s;
+}
+
+.Modifications .Piece {
+  display: flex;
+  width: unset;
+  height: unset;
+  align-items: center;
+  border-right: 0.75vh solid rgb(0, 71, 171);
+  margin: 2px 6px 3px 0px;
+}
+.Modifications .Piece p{
+  width: 75%;
+
+}
+.Modifications button{
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  border: unset;
+  background-color: unset;
+}
+.Modifications img{
+  opacity: 100;
+  margin: 0;
+  width: 4vh;
+  height: 4vh;
+}
+#Sous-Categorie .Piece {
+  display: flex;
+  width: unset;
+  height: unset;
+  justify-content: center;
+  /*border-radius: 1vh;*/
+  border-left: solid 0.5vh #0047AB;
+  margin: 5px 0px;
+  align-items: center;
+}
+
+#bas {
+  display: flex;
+  width: 100%;
+  height: 15vh;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#bas button {
+  background-color: #0047AB;
+  height: fit-content;
+  width: fit-content;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  border-radius: 0.5vh;
+}
+#bas button p {
+  height: fit-content;
+  background-color: unset;
+  margin: unset;
+  font-size: 2.0vmin;
+  color: white;
+}
+
+img {
+  background-size: 50%;
+  container-type: size;
+  width: 100%;
+}
+
+#retour {
+  margin: 1vh;
+  height: 3vh;
+  width: 3vh;
+}
+
+#Carrosserie{
+  display: none; 
+}
+
+#CategorieColorPicker{
+  width: 90%;
+  text-align: center;
+}
+
+#Deroulant{
+  display: flex;
+  width: 3vh;
+  height: 3vh;
+  position: absolute;
+  background-color: rgb(255 255 255 / 15%);
+  border-bottom: black solid;
+  border-right: black solid;
+  border-top: black solid;
+}
+#Deroulant label{
+  display: contents;
+}
+#Deroulant img{
+  border-radius: unset;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+#imgderoulant{
+  transform : scaleX(-1.05);
+  transition: 0.5s;
+}
+#toggle_deroulant{
+  display: block;
+  position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+}
+
+
+
+  .ctrl {
+    margin: auto 1vh auto 1vh;
+    height: 4vh;
+    width: 11vh;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 3vh;
+  }
+  .ctrl__counter {
+    position: relative;
+    width: 11vh;
+    height: 4vh;
+    color: #333C48;
+    text-align: center;
+    overflow: hidden;
+  }
+  .ctrl__counter-input {
+    height: 4vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    z-index: 2;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    color: grey;
+    font-size: 3vh;
+    line-height: 100px;
+    text-align: center;
+    background-color: #3d3d3d;
+  }
+  .ctrl__button {
+    height: 4vh;
+    width: 10vh;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 100ms ease-in;
+  }
+  .ctrl__button:hover {
+    transition: background-color 100ms ease-in;
+    transform: scale(1.2);
+  }
+  .ctrl__button:active {
+    transition: background-color 100ms ease-in;
+    transform: scale(1.4);
+  }
+  .ctrl__button--decrement {
+    border-radius: 5px 0 0 5px;
+  }
+  .ctrl__button--increment {
+    border-radius: 0 5px 5px 0;
+  }
+
+.Esthethique,.Carrosserie,.Pneumatique,.Performance{
+  display: none;
+}
+
+*{
+  -user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  font-family: 'Poppins';
+}
+img:not(#Arcadia) {
+  cursor: pointer;
+}
+
+
+
+.toggle {
+  display: inline-block;
+  position: relative;
+  width: 150px;
+  height: 40px;
+  background-color: #777;
+  overflow: hidden;
+  box-shadow: inset 0 10px 25px rgba(0, 0, 0, 0.5);
+  margin: 10px;
+}
+.toggle__input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  z-index: 2;
+}
+.toggle__label {
+  display: inline-block;
+  width: 75px;
+  height: 40px;
+  background-color: #6ab3e5;
+  color: #FFF;
+  font-size: 1.1em;
+  font-weight: 300;
+  text-align: center;
+  text-shadow: 1px 1px 0px #444;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.7);
+  line-height: 40px;
+  transition: all 0.2s ease-in-out;
+}
+.toggle__label:before {
+  content: attr(data-off);
+}
+.toggle input:checked + label {
+  margin-left: 75px;
+  background: #0047AB;
+  color: white;
+}
+.toggle input:checked + label:before {
+  content: attr(data-on);
+}
+
+.toggle--on-off label.toggle__label {
+  background-color: #f47e71;
+}
+
+.toggle--yes-no label.toggle__label {
+  background-color: #EF4836;
+}
+.toggle--yes-no input:checked + label {
+  background: #F5AB35;
+}
+
+#priceOngletEmployee{
+  color: #0047AB;
+  gap: 1vw;
+  display: flex;
+}
+#priceOngletClient {
+  color: #14ab00;
+  gap: 1vw;
+  display: flex;
+}
+
+#priceMenu {
+  padding-top: 8%;
+  gap: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

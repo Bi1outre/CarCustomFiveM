@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tuning</title>
+    <link href="./tuning.css" rel="stylesheet">
+    <link href="./pickercolor.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="./colorpicker.js"></script>
+    <script src="./colorpicker2.js"></script>
+    <script type='text/javascript' src='tinycolor.js'></script>
+    <script type='text/javascript'>
+</script>
+
+</head>
+<body style="display: none;">
+    <div id="sideBar">
+        <div    class="sideItem" onclick="showElements('Peinture'); hideElements('Esthethique');hideElements('Carrosserie');hideElements('Pneumatique');hideElements('Performance');" style="background-image: url(images/Peinture.png);"></div>
+        <div    class="sideItem" onclick="showElements('Esthethique'); hideElements('Peinture');hideElements('Carrosserie');hideElements('Pneumatique');hideElements('Performance');" style="background-image: url(images/Esthethique.png);"> </div>
+        <div    class="sideItem" onclick="showElements('Carrosserie'); hideElements('Peinture');hideElements('Esthethique');hideElements('Pneumatique');hideElements('Performance');" style="background-image: url(images/carrosserie.png);"> </div>
+        <div    class="sideItem" onclick="showElements('Pneumatique'); hideElements('Peinture');hideElements('Esthethique');hideElements('Carrosserie');hideElements('Performance');"  style="background-image: url(images/pneu.png);"></div>
+        <div    class="sideItem" onclick="showElements('Performance'); hideElements('Peinture');hideElements('Esthethique');hideElements('Carrosserie');hideElements('Pneumatique');"  style="background-image: url(images/symbole-dinterface-dengrenage-pour-la-configuration.png);"></div>
+    </div>
+
+    <div id="sommet" class="SommetOrigine">
+        <img id ="Arcadia" src="images/Logo1-no-background---512x512---Futuro-Studio.png">
+    </div>
+    <div id="Menu">
+        <div id="contenant" class="Peinture">
+            <div id="Categorie" class="secondaire">
+                <div id ="Sous-Categorie">
+                    
+                    <div class="Piece"> 
+                        <select name="Couleur" id="PeintureCat">
+                            <option value="Principal"> Principale </option>
+                            <option value="Secondaire"> Secondaire </option>
+                        </select>
+                        <select name="Peinture" id="PeintureCouleur" onchange="checkSelection(), triggerResizeEvent()">
+                            <option value="Metallique"> Metallique </option>
+                            <option value="Matte"> Matte </option>
+                            <option value="Métaux"> Métaux </option>
+                            <option value="Chrome"> Chrome</option>
+                            <option value="Caméléon"> Caméléon</option>
+                        </select>
+                    </div>
+    
+                    <div class="Piece" id="ColorPickerPrincipal" >
+                        <div class="color-picker-panel" id="color-picker-1">
+                            <div class="panel-row">
+                              <div class="swatches default-swatches"></div>
+                            </div>
+                            <div class="panel-row">
+                              <div class="spectrum-map">
+                                <button id="spectrum-cursor" class="color-cursor"></button>
+                                <canvas id="spectrum-canvas"></canvas>
+                              </div>
+                              <div class="hue-map">
+                                <button id="hue-cursor" class="color-cursor"></button>
+                                <canvas id="hue-canvas"></canvas>
+                              </div>
+                            </div>
+                            <div class="panel-row">
+                              <div id="rgb-fields" class="field-group value-fields rgb-fields active">
+                                <div class="field-group">
+                                  <label for="" class="field-label">R:</label>
+                                  <input type="number" max="255" min="0" id="red" class="field-input rgb-input"/>
+                                </div>
+                                <div class="field-group">
+                                  <label for="" class="field-label">G:</label>
+                                  <input type="number" max="255" min="0" id="green" class="field-input rgb-input"/>
+                                </div>
+                                <div class="field-group">
+                                  <label for="" class="field-label">B:</label>
+                                  <input type="number" max="255" min="0" id="blue" class="field-input rgb-input"/>
+                                </div>
+                              </div>
+                              <div id="hex-field" class="field-group value-fields hex-field">
+                                <label for="" class="field-label">Hex:</label>
+                                <input type="text" id="hex" class="field-input"/>
+                              </div>
+                              <button style="display: none;" id="mode-toggle" class="button mode-toggle">Mode</button>
+                            </div>
+                            <div class="panel-row" style="display: none;">
+                              <h2 class="panel-header">User Colors</h2>
+                              <div id="user-swatches" class="swatches custom-swatches">
+                              </div>
+                              <button id="add-swatch" class="button add-swatch">
+                                <span id="color-indicator" class="color-indicator"></span><span>Add to Swatches</span>
+                              </button>
+                            </div>
+                          </div>
+                    </div>
+                    
+                    <div class="Piece" id = "Cameleon" style="display: none;">
+                        <div class="color-picker-panel9" id="color-picker9">
+                            <div class="panel-row9">
+                              <div class="swatches9 default-swatches9"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id ="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Nacrage </p>
+                    </div>
+                    <div class="Piece">
+                        <div class="color-picker-panel8" id="color-picker8">
+                            <div class="panel-row8">
+                              <div class="swatches8 default-swatches8"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id ="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Tableau de bord</p>
+                    </div>
+                    <div class="Piece">
+                        <div class="color-picker-panel4" id="color-picker4">
+                            <div class="panel-row4">
+                              <div class="swatches4 default-swatches4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id ="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Interieur </p>
+                    </div>
+                    <div class="Piece">
+                        <div class="color-picker-panel3" id="color-picker3">
+                            <div class="panel-row3">
+                              <div class="swatches3 default-swatches3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contenant" class="Esthethique">
+            <div id="Categorie" class="secondaire">
+                <div id="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Neon </p>
+                        <div class="wrapper-toggle">
+                            <div class="toggle toggle--on-off">
+                                <input id="Neon" class="toggle__input" type="checkbox" onchange="checkToggleState('Neon')"/>
+                                <label class="toggle__label" data-on="ON" data-off="OFF"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Couleur Neon </p> 
+                    </div>
+                    <div class="Piece">
+                        <div class="color-picker-panel5" id="color-picker5">
+                            <div class="panel-row5">
+                                <div class="swatches5 default-swatches5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Sous-Categorie">
+                    <div class="Piece" id="22"> 
+                        <p> Feu Xenon </p>
+                        <div class="wrapper-toggle">
+                            <div class="toggle toggle--on-off">
+                                <input id="Xenon" class="toggle__input" type="checkbox" onchange="checkToggleState('Xenon')"/>
+                                <label class="toggle__label" data-on="ON" data-off="OFF"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Couleur Xenon </p> 
+                    </div>
+                    <div class="Piece">
+                        <div class="color-picker-panel6" id="color-picker6">
+                            <div class="panel-row6">
+                                <div class="swatches6 default-swatches6"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Fenêtre </p> 
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustTint('fenetre', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="fenetre" class='ctrl__counter-input' maxlength='1' type='text' value='0' max='5'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustTint('fenetre', 1)">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contenant" class="Carrosserie">
+            <div id="Categorie" class="secondaire">
+                <div id="Sous-Categorie">
+                    <div class="Piece" id="0"> 
+                        <p id="0">Aileron</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('aileron', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="aileron" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('aileron', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="1"> 
+                        <p id="1">Pare-Choc Avant</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('parechocavant', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="parechocavant" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('parechocavant', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="2"> 
+                        <p id="2">Pare-Choc Arrière</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('parechocarriere', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="parechocarriere" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('parechocarriere', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="3"> 
+                        <p id="3">Bas de Caisse</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('basdecaisse', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="basdecaisse" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('basdecaisse', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="4"> 
+                        <p id="4">Échappement</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('echappement', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="echappement" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('echappement', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="5"> 
+                        <p id="5">Châssis</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('chassis', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="chassis" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('chassis', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="6"> 
+                        <p id="6">Calandre</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('calandre', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="calandre" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('calandre', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="7"> 
+                        <p id="7">Capot</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('capot', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="capot" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('capot', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="8"> 
+                        <p id="8">Coffre</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('coffre', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="coffre" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('coffre', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="9"> 
+                        <p id="9" >Extra 1</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('extra1', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="extra1" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('extra1', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="10"> 
+                        <p id="10">Extra 2</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('extra2', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="extra2" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('extra2', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="14"> 
+                        <p id="14">Klaxons</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('klaxons', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="klaxons" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('klaxons', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="19"> 
+                        <p id="19">Enceintes</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('enceintes', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="enceintes" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('enceintes', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="21"> 
+                        <p id="21">Hydraulique</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('hydrolique', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="hydrolique" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('hydrolique', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="25"> 
+                        <p id="25">Porte-Plaque</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('porteplaque', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="porteplaque" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('porteplaque', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="26"> 
+                        <p id="26">Extra 3</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('extra3', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="extra3" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('extra3', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="27"> 
+                        <p id="27">Design des Bandes Décoratives</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('designbandesdecoratives', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="designbandesdecoratives" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('designbandesdecoratives', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="28"> 
+                        <p id="28">Ornements</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('ornement', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="ornement" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('ornement', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="29"> 
+                        <p id="29">Tableau de Bord</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('tableaubord', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="tableaubord" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('tableaubord', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="30"> 
+                        <p id="30">Design du Cadran</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('designcadran', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="designcadran" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('designcadran', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="31"> 
+                        <p id="31">Haut-Parleurs et Portières</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('portiere', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="portiere" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('portiere', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="32"> 
+                        <p id="32">Sièges</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('siege', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="siege" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('siege', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="33"> 
+                        <p id="33">Volant</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('volant', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="volant" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('volant', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="34"> 
+                        <p id="34">Levier de Vitesse</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('leviervitesse', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="leviervitesse" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('leviervitesse', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="35"> 
+                        <p id="35">Plaques</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('plaque', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="plaque" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('plaque', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="36"> 
+                        <p id="36" >Extra 4</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('extra4', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="extra4" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('extra4', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="37"> 
+                        <p id="37">Extra 5</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('extra5', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="extra5" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('extra5', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="39"> 
+                        <p id="39">Bloc Moteur</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('blocmoteur1', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="blocmoteur1" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('blocmoteur1', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="40"> 
+                        <p id="40">Bloc Moteur 2</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('blocmoteur2', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="blocmoteur2" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('blocmoteur2', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="41"> 
+                        <p id="41">Amortisseurs</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('amortisseur', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="amortisseur" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('amortisseur', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="42"> 
+                        <p id="42">Extra 6</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('extra6', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="extra6" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('extra6', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="43"> 
+                        <p id="43">Extra 7</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('extra7', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="extra7" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('extra7', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="44"> 
+                        <p id="44">Extra 8</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('extra8', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="extra8" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('extra8', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="45"> 
+                        <p id="45">Réservoir</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('reservoir', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="reservoir" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('reservoir', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="46"> 
+                        <p id="45">Vitres</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('vitre', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="vitre" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('vitre', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="47"> 
+                        <p id="45">Extra 9</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('extra9', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="extra9" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('extra9', 1)">+</div>
+                        </div>
+                    </div>
+                    <div class="Piece" id="48"> 
+                        <p id="48">Stickers</p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('stickers', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="stickers" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('stickers', 1)">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contenant" class="Pneumatique">
+            <div id="Categorie" class="secondaire">
+                <div id ="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Jantes </p>
+                    </div>
+                    <div class="Piece"> 
+                        <select name="Jantes" id = "JantesCat" onchange="checkSelectionJantes()">
+                            <option value="0"> Choisir Categorie de Pneu </option>
+                            <option value="1"> Sport </option>
+                            <option value="2"> Muscle </option>
+                            <option value="3"> Low-Rider</option>
+                            <option value="4"> SUV </option>
+                            <option value="5"> OFF-Road </option>
+                            <option value="6"> Tuner </option>
+                            <option value="7"> Moto </option>
+                            <option value="9"> Import 1 </option>
+                            <option value="10"> Import 2 </option>
+                            <option value="11"> Import 3 </option>
+                            <option value="12"> Street </option>
+                            <option value="13"> Track </option>   
+                        </select>
+                        <div id="choixJantes"class='ctrl' style="display: none;">
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustJante('categoriepneu', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="categoriepneu" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='50'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustJante('categoriepneu', 1)">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div id ="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p>Couleur des Jantes</p>
+                    </div>
+                    <div class="Piece">
+                        <div class="color-picker-panel7" id="color-picker7">
+                            <div class="panel-row7">
+                              <div class="swatches7 default-swatches7"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id ="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Couleur Fumée Pneu </p>
+                    </div>
+                    <div class="Piece">
+                        <div class="color-picker-panel2" id="color-picker2">
+                            <div class="panel-row2">
+                              <div class="swatches2 default-swatches2"></div>
+                            </div>
+                            <div class="panel-row2">
+                              <div class="spectrum-map2">
+                                <button id="spectrum-cursor2" class="color-cursor2"></button>
+                                <canvas id="spectrum-canvas2"></canvas>
+                              </div>
+                              <div class="hue-map2">
+                                <button id="hue-cursor2" class="color-cursor2"></button>
+                                <canvas id="hue-canvas2"></canvas>
+                              </div>
+                            </div>
+                            <div class="panel-row2">
+                              <div id="rgb-fields2" class="field-group2 value-fields2 rgb-fields2 active2">
+                                <div class="field-group2">
+                                  <label for="" class="field-label2">R:</label>
+                                  <input type="number" max="255" min="0" id="red2" class="field-input2 rgb-input2"/>
+                                </div>
+                                <div class="field-group2">
+                                  <label for="" class="field-label">G:</label>
+                                  <input type="number" max="255" min="0" id="green2" class="field-input2 rgb-input2"/>
+                                </div>
+                                <div class="field-group2">
+                                  <label for="" class="field-label">B:</label>
+                                  <input type="number" max="255" min="0" id="blue2" class="field-input2 rgb-input2"/>
+                                </div>
+                              </div>
+                              <div id="hex-field2" class="field-group2 value-fields2 hex-field2">
+                                <label for="" class="field-label2">Hex:</label>
+                                <input type="text" id="hex2" class="field-input2"/>
+                              </div>
+                              <button style="display: none;" id="mode-toggle2" class="button mode-toggle2">Mode</button>
+                            </div>
+                            <div class="panel-row2" style="display: none;">
+                              <h2 class="panel-header2">User Colors</h2>
+                              <div id="user-swatches2" class="swatches2 custom-swatches2">
+                              </div>
+                              <button id="add-swatch2" class="button2 add-swatch2">
+                                <span id="color-indicator2" class="color-indicator2"></span><span>Add to Swatches</span>
+                              </button>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+                <div id ="Sous-Categorie" class="Pneucustom">
+                    <div class="Piece" id ="Pneucustom"> 
+                        <p> Pneu Custom </p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustPneuCustom('pneucustom', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="pneucustom" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='6'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustPneuCustom('pneucustom', 1)">+</div>
+                        </div>
+                    </div>
+                </div>
+                <div id ="Sous-Categorie">
+                    <div class="Piece" id="15"> 
+                        <p> Suspension </p>
+                        <div class='ctrl'>
+                            <div class='ctrl__button ctrl__button--decrement' onclick="adjustValue('suspension', -1)">&ndash;</div>
+                            <div class='ctrl__counter'><input id="suspension" class='ctrl__counter-input' maxlength='2' type='text' value='0' max='4'></div>
+                            <div class='ctrl__button ctrl__button--increment' onclick="adjustValue('suspension', 1)">+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contenant" class="Performance">
+            <div id="Categorie" class="secondaire">
+                <div id="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Moteur </p>
+                        <div class="wrapper-toggle">
+                            <div class="toggle toggle--on-off">
+                                <input id="Moteur" class="toggle__input" type="checkbox" onchange="checkToggleState('Moteur')"/>
+                                <label class="toggle__label" data-on="ON" data-off="OFF"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Freins </p>
+                        <div class="wrapper-toggle">
+                            <div class="toggle toggle--on-off">
+                                <input id="Freins" class="toggle__input" type="checkbox" onchange="checkToggleState('Freins')"/>
+                                <label class="toggle__label" data-on="ON" data-off="OFF"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Transmission </p>
+                        <div class="wrapper-toggle">
+                            <div class="toggle toggle--on-off">
+                                <input id="Transmission" class="toggle__input" type="checkbox" onchange="checkToggleState('Transmission')"/>
+                                <label class="toggle__label" data-on="ON" data-off="OFF"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="Sous-Categorie">
+                    <div class="Piece"> 
+                        <p> Turbo </p>
+                        <div class="wrapper-toggle">
+                            <div class="toggle toggle--on-off">
+                                <input id="Turbo" class="toggle__input" type="checkbox" onchange="checkToggleState('Turbo')"/>
+                                <label class="toggle__label" data-on="ON" data-off="OFF"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="contenant" class="Modifications" style="display: flex;">
+            
+            <div id="Categorie" class="secondaire">
+                <div id="ListeModif">
+                    
+                </div>
+                <div id="priceMenu">
+                    <div id="priceOngletEmployee">
+                        <div>Prix Employée</div>
+                    <div id="price"> 0 </div>
+                    </div>
+                    <div id="priceOngletClient">
+                        <div>Prix Client</div>
+                        <div id="client"> 0 </div>
+                    </div>
+                </div>
+
+
+                <div id="bas">
+                    <button id = "Valider">
+                        <p>Payer</p>
+                    </button>
+                    <button id = "Facturer" style="background-color:#14ab00">
+                        <p>Facturer</p>
+                    </button>
+                    <button id = "Annuler" style="background-color:#ab0000">
+                        <p>Annuler</p>
+                    </button>
+                </div>
+            </div>
+            <div>
+                
+                <div id="Deroulant">
+                    <input id="MenuDeroulant" class="toggle__input" type="checkbox"/>
+                    <label> <img id='imgderoulant' src="images/fleche-droite.png">  </label>
+                </div>
+            </div>
+        </div>
+        <div id="bottom">
+            <div id="bottomContainer">
+                <div    class="Opener"    id="PagePrincipal"> <img id="door" src="images/Door.png" draggable="false" > </div>
+                <div    class="Opener"    id="PagePrincipal"> <img id="hood" src="images/hood.png" draggable="false" > </div>
+                <div    class="Opener"    id="PagePrincipal"> <img id="left" src="images/cameraLeft.png" draggable="false" > </div>
+                <div    class="Opener"    id="PagePrincipal"> <img id="right" src="images/cameraRight.png" draggable="false" > </div>
+                <div    class="Opener"    id="PagePrincipal"> <img id="top" src="images/cameraTop.png" draggable="false" > </div>
+                <div    class="Opener"    id="PagePrincipal"> <img id="bot" src="images/cameraBottom.png" draggable="false" > </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+
