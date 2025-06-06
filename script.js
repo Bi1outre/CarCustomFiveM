@@ -247,7 +247,7 @@ function adjustTint(elementId, increment) {
     }));
 }
 $(document).ready(function() {
-    document.body.style.display="none";
+    document.body.style.display="flex";
 
     const observer = new MutationObserver(updateClientValue);
     const config = { childList: true };
